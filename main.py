@@ -278,21 +278,69 @@ class StudentSuccessHandler(webapp2.RequestHandler):
 
 class StudentHomepageHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user': users.get_current_user,
+        }
         template = JINJA_ENVIRONMENT.get_template('studenthome.html')
         self.response.write(template.render())        
 
 class ThesisHomepageHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user': users.get_current_user,
+        }
         template = JINJA_ENVIRONMENT.get_template('thesishome.html')
         self.response.write(template.render()) 
 
 class AdviserHomepageHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user': users.get_current_user,
+        }
         template = JINJA_ENVIRONMENT.get_template('adviserhome.html')
         self.response.write(template.render())         
 
 class ThesisNewHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user': users.get_current_user,
+        }
         template = JINJA_ENVIRONMENT.get_template('thesisnew.html')
         self.response.write(template.render())
 
@@ -307,6 +355,18 @@ class ThesisNewHandler(webapp2.RequestHandler):
 
 class AdviserNewHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user': users.get_current_user,
+        }
         template = JINJA_ENVIRONMENT.get_template('advisernew.html')
         self.response.write(template.render())
 
@@ -323,6 +383,18 @@ class AdviserNewHandler(webapp2.RequestHandler):
 
 class StudentNewHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user': users.get_current_user,
+        }
         template = JINJA_ENVIRONMENT.get_template('studentnew.html')
         self.response.write(template.render())
 
@@ -359,6 +431,7 @@ class ThesisListHandler(webapp2.RequestHandler):
             'guestbook_name': urllib.quote_plus(guestbook_name),
             'url': url,
             'url_linktext': url_linktext,
+            'user': users.get_current_user(),
         }
         
         template = JINJA_ENVIRONMENT.get_template('thesislist.html')
@@ -386,6 +459,7 @@ class AdviserListHandler(webapp2.RequestHandler):
             'guestbook_name': urllib.quote_plus(guestbook_name),
             'url': url,
             'url_linktext': url_linktext,
+            'user': users.get_current_user(),
         }
 
         template = JINJA_ENVIRONMENT.get_template('adviserlist.html')
@@ -412,6 +486,7 @@ class StudentListHandler(webapp2.RequestHandler):
             'guestbook_name': urllib.quote_plus(guestbook_name),
             'url': url,
             'url_linktext': url_linktext,
+            'user': users.get_current_user(),
         }
 
         template = JINJA_ENVIRONMENT.get_template('studentlist.html')
